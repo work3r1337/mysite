@@ -9,7 +9,7 @@ def post_list(request):
     post_list = Post.published.all()
     # Постраничная разбивка с 3 постами на страницу
     paginator = Paginator(post_list, 3)
-    page_number = request.GET.get('page')
+    page_number = request.GET.get('page', 1)
     try:
         posts = paginator.page(page_number)
     except PageNotAnInteger:
